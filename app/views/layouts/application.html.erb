@@ -25,19 +25,27 @@
         <li class="nav-item">
           <a class="nav-link" href="/events/new">New Event</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Connexion
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/users/sign_up">S'inscrire</a></li>
-            <li><a class="dropdown-item" href="/users/sign_in">Se connecter</a></li>
-            <li><a class="dropdown-item" href="/users/sign_out">Déconnexion</a></li>
-          </ul>
-          <li class="nav-item">
-          <a class="nav-link" href="/static_pages/index">Mon profil</a>
-        </li>
-        </li>
+        <% if user_signed_in? %>
+                <div class="dropdown">
+                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mon profil
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Mon profil",  static_pages_index_path, class:"dropdown-item" %></li>
+                    <li><%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
+                  </ul>
+                </div>
+              <% else %>
+                <div class="dropdown">
+                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    S'inscrire / Se connecter 
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/users/sign_in">Se connecter</a></li>
+                    <li><a class="dropdown-item" href="/users/sign_up">S'inscrire</a></li>
+                  </ul>
+                </div>
+              <% end %>
       </ul>
     </div>
   </div>
@@ -46,7 +54,7 @@
     <%= yield %>
 
   <div class="">
-  <footer class="bg-dark sticky-bottom text-center text-white">
+  <footer class="bg-dark fixed-bottom text-center text-white">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2022 Copyright:
       <a class="text-white" href="/">Event-Brite.com</a>

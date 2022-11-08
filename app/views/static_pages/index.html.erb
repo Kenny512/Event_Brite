@@ -1,7 +1,7 @@
 <ul>
 <% if user_signed_in? %>
   <li>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <li><%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
   </li>
 
   <li>
