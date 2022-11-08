@@ -2,7 +2,7 @@ require 'faker'
 Faker::Config.locale = 'fr'
 
 20.times do |t|
-    user = User.create!(email: Faker::Internet.email(domain: 'yopmail.com'), password: "test123456", description: Faker::Lorem.sentence( word_count: 5), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+    user = User.create!(email: Faker::Internet.email(domain: 'yopmail.com'), encrypted_password: "test123456", description: Faker::Lorem.sentence( word_count: 5), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
 end
 
 50.times do |t|

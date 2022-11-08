@@ -7,12 +7,10 @@ class Event < ApplicationRecord
     #multiple de 5
 
     validates :title, 
-    presence:true,
-    length: {in: 5..140}
+    presence:true
 
     validates :description, 
-    presence:true,
-    length: {in: 20..1000}
+    presence:true
 
     validates :price, 
     presence:true,
